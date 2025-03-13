@@ -1,0 +1,21 @@
+.title{
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+}
+.instruction span{
+    font-size: 30px;
+}
+.box{
+    display: flex;
+}
+.back{
+    position: absolute;
+    content: '';
+    z-index: 100;
+}
+.favorite{
+    position: absolute;
+    z-index: 100;
+    right: 100px;
+}
