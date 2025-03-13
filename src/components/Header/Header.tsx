@@ -2,9 +2,10 @@ import './Header.css';
 import { useSelector } from 'react-redux';
 import {Navbar, Container, Nav} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import { RootState } from "../../store";
 
 const Header = () => {
-    const favorites = useSelector((state) => state.meals.favorites || []);
+    const favorites = useSelector((state: RootState) => state.meals.favorites);
     console.log(favorites)
 
     return (

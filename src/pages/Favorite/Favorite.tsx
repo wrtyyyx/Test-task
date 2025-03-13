@@ -1,11 +1,26 @@
 import { useSelector } from "react-redux";
-import Card from "../../components/Card/Card.tsx";
+import Card from "../../components/Card/Card";
+import { RootState } from "../../store";
+
+interface Ingredient {
+    ingredient: string;
+    measure: string;
+}
+
+interface Meal {
+    idMeal: string;
+    strMeal: string;
+    strInstructions: string;
+    strMealThumb: string;
+    strCategory: string;
+    ingredients: Ingredient[];
+}
 
 const Favorite = () => {
-    const favorites = useSelector((state) => state.meals.favorites);
+    const favorites = useSelector((state: RootState) => state.meals.favorites) as Meal[];
 
-    const allIngredients = favorites.reduce((acc, meal) => {
-        meal.ingredients.forEach(({ ingredient, measure }) => {
+    const allIngredients = favorites.reduce<{ ingredient: string; measure: string }[]>((acc, meal) => {
+        meal.ingredients.forEach(({ ingredient, measure }: { ingredient: string; measure: string }) => {
             const existing = acc.find((item) => item.ingredient === ingredient);
             if (existing) {
                 existing.measure += `, ${measure}`;
@@ -15,6 +30,7 @@ const Favorite = () => {
         });
         return acc;
     }, []);
+
 
     return (
         <div>

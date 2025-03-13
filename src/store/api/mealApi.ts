@@ -1,4 +1,4 @@
-import {BaseQueryArg, createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
 interface Meal {
     idMeal: string;
@@ -39,7 +39,7 @@ export const mealApi = createApi({
         }),
         getMeal: builder.query<MealsResponse, string>({
             query: (id) => `/lookup.php?i=${id}`,
-            providesTags: (result, error, id) => [{type: 'Meals', id}],
+            providesTags: (_result, _error, id) => [{type: 'Meals', id}],
         }),
 
         searchMeal: builder.query<MealsResponse, string>({

@@ -10,6 +10,7 @@ interface Meal {
 const Card = ({data}: { data: Meal }) => {
     const { data: mealDetails } = useGetMealQuery(data.idMeal);
     if (!data) return null;
+    if (!mealDetails?.meals) return <p>No meals found</p>;
 
     return (
         <Link to={`${mealDetails?.meals[0]?.idMeal}`} style={{ border: "1px solid #ddd", padding: "10px", borderRadius: "10px" }}>
